@@ -8,16 +8,16 @@ export const login = createAsyncThunk(
   async (formData, { rejectWithValue }) => {
     try {
       const data = await AuthModel.loginUser(formData);
-      // sessionStorage.setItem("token",data.payload.token)
+      
       // console.log("data =======>",data);
-      sessionStorage.setItem('token', data.token)
 
       console.log("Login success:", data);
       return data;
       // return the useful part or sending use full data to redux to set the state
       //  like token,userid isauth something like the action part
-      // this shit get formated
+      // this shit get formated in this-way
       // res.token =>> action.payload.token
+      
     } catch (error) {
       console.error("Login error:", error);
 

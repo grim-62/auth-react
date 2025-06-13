@@ -7,9 +7,15 @@ const instance = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL || "http://localhost:3000",
 });
 
+let token = null
+
+export const setAuthToken = (tokenVal) =>{
+  token = tokenVal
+}
+
 instance.interceptors.request.use(
   (config) => {
-    const token = sessionStorage.getItem('token')
+
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
